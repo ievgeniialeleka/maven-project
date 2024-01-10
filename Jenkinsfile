@@ -19,7 +19,7 @@ pipeline {
 		   parallel {
           stage ('Deploy to staging'){
            steps {
-            bat 'xcopy /s /y .\\*\\target\\*.war "C:\\Users\\ievge\\Downloads\\tomcat_staging\\apache-tomcat-9.0.84\\webapps"'
+            bat 'xcopy /s /y "C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\mvn_pipeline_as_code\\webapp\\target\\webapp.war" "C:\\Users\\ievge\\Downloads\\tomcat_staging\\apache-tomcat-9.0.84\\webapps"'
 
 
             }
