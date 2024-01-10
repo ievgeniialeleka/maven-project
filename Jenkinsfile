@@ -1,5 +1,8 @@
 pipeline {
    agent any
+	triggers{
+		pollSCM('* /5 * * * *')
+	}
    stages{
           stage ('Build') {
            steps {
@@ -12,9 +15,11 @@ pipeline {
 			  }
 		  }
           }
+	   stage ('Deployments') {
+		   parallel {
           stage ('Deploy to staging'){
            steps {
-            build job:'deploy_to_staging'
+            bat 'cp **/*.war /c/Users/ievge/Downloads/tomcat staging/apache-tomcat-9.0.84/webapps'
             }
           }
 	   stage ('Deploy to prod'){
@@ -22,8 +27,10 @@ pipeline {
             timeout(time:5, unit:'DAYS') {
 		   input message:'Approve prod deployment?'
 	    }
-            build job:'deploy_to_prod'
+             bat 'cp **/*.war /c/Users/ievge/Downloads/tomcat prod/apache-tomcat-9.0.84/webapps'
             }
           }
+	}
+	}
     }
 }
