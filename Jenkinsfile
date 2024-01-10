@@ -11,7 +11,7 @@ pipeline {
 		  post{
 			  success{
 				  echo 'Archiving...'
-				  archiveArtifacts artifacts:'for /R %G in (*.war) do (echo %G)'
+				  archiveArtifacts artifacts:'**/*.war'
 			  }
 		  }
           }
@@ -19,7 +19,7 @@ pipeline {
 		   parallel {
           stage ('Deploy to staging'){
            steps {
-            bat 'xcopy /s /y .\\**\\*.war "C:\\Users\\ievge\\Downloads\\tomcat_staging\\apache-tomcat-9.0.84\\webapps"'
+            bat 'xcopy /s /y .\\*\\*.war "C:\\Users\\ievge\\Downloads\\tomcat_staging\\apache-tomcat-9.0.84\\webapps"'
 
 
             }
