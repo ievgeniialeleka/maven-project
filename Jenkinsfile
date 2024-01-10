@@ -19,7 +19,7 @@ pipeline {
 		   parallel {
           stage ('Deploy to staging'){
            steps {
-            bat 'copy  **/*.war /c/Users/ievge/Downloads/tomcat_staging/apache-tomcat-9.0.84/webapps'
+            bat 'copy /Y .\\**\\*.war "C:\\Users\\ievge\\Downloads\\tomcat_staging\\apache-tomcat-9.0.84\\webapps"'
 
 
             }
