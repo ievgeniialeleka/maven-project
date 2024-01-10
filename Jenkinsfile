@@ -19,12 +19,12 @@ pipeline {
 		   parallel {
           stage ('Deploy to staging'){
            steps {
-            bat 'cp **/*.war /c/Users/ievge/Downloads/tomcat_staging/apache-tomcat-9.0.84/webapps'
+            bat 'copy **/*.war /c/Users/ievge/Downloads/tomcat_staging/apache-tomcat-9.0.84/webapps'
             }
           }
 	   stage ('Deploy to prod'){
            steps {
-             bat 'cp **/*.war /c/Users/ievge/Downloads/tomcat_prod/apache-tomcat-9.0.84/webapps'
+             bat 'copy **/*.war /c/Users/ievge/Downloads/tomcat_prod/apache-tomcat-9.0.84/webapps'
             }
           }
 	}
