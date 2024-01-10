@@ -11,7 +11,7 @@ pipeline {
 		  post{
 			  success{
 				  echo 'Archiving...'
-				  archiveArtifacts artifacts:'**/*.war'
+				  archiveArtifacts artifacts:'for /R %G in (*.war) do (echo %G)'
 			  }
 		  }
           }
